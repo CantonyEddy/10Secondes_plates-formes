@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbf5cba7193b53d4eacc560b8ba9c67a, type: 3}
-  m_Name: gnomData
+  m_Name: SnailData
   m_EditorClassIdentifier: 
   enemyName: Gnomy
   health: 1
