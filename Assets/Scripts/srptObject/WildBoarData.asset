@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf5cba7193b53d4eacc560b8ba9c67a, type: 3}
   m_Name: WildBoarData
   m_EditorClassIdentifier: 
-  enemyName: Bloby
+  enemyName: Wild Boar
   health: 1
   speed: 4
-  time: 2
+  time: 4
   color: {r: 0, g: 1, b: 0.19915867, a: 1}

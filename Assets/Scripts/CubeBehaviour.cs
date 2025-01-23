@@ -78,7 +78,7 @@ public class CubeBehaviour : MonoBehaviour
             // Récupère tous les ennemis dans le rayon
             Collider2D enemies = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, enemyLayer);
             // Détruit ennemi
-            timerScript.AddTime(enemies.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemies.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemies.gameObject);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
@@ -193,7 +193,7 @@ public class CubeBehaviour : MonoBehaviour
             else
             {
                 // Détruit l'ennemi
-                timerScript.AddTime(collision.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+                timerScript.AddTime(collision.gameObject.GetComponent<EnemyData>().enemyData.time);
                 Destroy(collision.gameObject);
             }
         }
@@ -269,7 +269,7 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemy.gameObject);
         }
     }
@@ -282,7 +282,7 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemy.gameObject);
         }
     }
