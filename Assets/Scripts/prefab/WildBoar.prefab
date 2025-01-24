@@ -177,6 +177,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: ee8702d80f621624a99918e0cdb3e774, type: 2}
+  detectionRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &2150716331947390190
 MonoBehaviour:
   m_ObjectHideFlags: 0

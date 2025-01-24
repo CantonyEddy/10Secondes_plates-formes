@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e5b27061e8a1a4a99bdec5a11680b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: 56ca0a6cbf4a0094f89d7e4b8d393d74, type: 2}
   circleRadius: 3
   flySpeed: 2
   attackSpeed: 5
