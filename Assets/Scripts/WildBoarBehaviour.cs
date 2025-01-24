@@ -4,6 +4,8 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public ennemy_data enemyData; // ScriptableObject contenant les données de l'ennemi
     private CubeBehaviour playerScript;
+    public float detectionRadius = 5f; // Distance à laquelle l'abeille détecte le joueur
+    public LayerMask playerLayer; // Layer du joueur
 
     void Start()
     {
@@ -23,7 +25,8 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (playerScript != null)
+        Collider2D playerCollider = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
+        if (playerScript != null && playerCollider != null)
         {
             // Récupère la position du joueur via son script
             Vector3 playerPosition = playerScript.PlayerPosition;
@@ -35,5 +38,11 @@ public class EnemyBehaviour : MonoBehaviour
             transform.Translate(movement, Space.World);
         }
 
+    }
+    private void OnDrawGizmosSelected()
+    {
+        // Dessine la zone de détection dans la vue scène pour le debug
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
     }
 }

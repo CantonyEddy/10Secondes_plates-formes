@@ -26,6 +26,7 @@ public class CubeBehaviour : MonoBehaviour
     public Vector3 PlayerPosition => transform.position;
 
     public GameObject gameOverScreen; // Référence au Game Over Canvas
+    public GameObject winScreen; // Référence au Game Over Canvas
 
     private Rigidbody2D rb;
     //private bool isGrounded;
@@ -78,7 +79,7 @@ public class CubeBehaviour : MonoBehaviour
             // Récupère tous les ennemis dans le rayon
             Collider2D enemies = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, enemyLayer);
             // Détruit ennemi
-            timerScript.AddTime(enemies.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemies.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemies.gameObject);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
@@ -193,9 +194,13 @@ public class CubeBehaviour : MonoBehaviour
             else
             {
                 // Détruit l'ennemi
-                timerScript.AddTime(collision.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+                timerScript.AddTime(collision.gameObject.GetComponent<EnemyData>().enemyData.time);
                 Destroy(collision.gameObject);
             }
+        }
+        if (collision.gameObject.CompareTag("End"))
+        {
+            Win();
         }
     }
 
@@ -210,6 +215,17 @@ public class CubeBehaviour : MonoBehaviour
         // Arrête le temps
         Time.timeScale = 0f;
     }
+    public void Win()
+    {
+        // Affiche l'écran de Win
+        if (winScreen != null)
+        {
+            winScreen.SetActive(true);
+        }
+
+        // Arrête le temps
+        Time.timeScale = 0f;
+    }
 
     public void RestartLevel()
     {
@@ -218,6 +234,28 @@ public class CubeBehaviour : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void NextLevel()
+    {
+        // Charge le niveau suivant
+        Time.timeScale = 1f; // Réinitialise le temps
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void LoadSceneByIndex(int index)
+    {
+        SceneManager.LoadScene(index);
+    }
+    private IEnumerator LoadAsync(string sceneName)
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!operation.isDone)
+        {
+            // Vous pouvez afficher une barre de progression ici
+            Debug.Log("Progression : " + (operation.progress * 100) + "%");
+            yield return null;
+        }
+    }
     /*private void OnCollisionEnter2D(Collision2D collision)
     {
         // Vérifie si le joueur touche le sol
@@ -269,7 +307,7 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemy.gameObject);
         }
     }
@@ -282,7 +320,7 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyBehaviour>().enemyData.time);
+            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
             Destroy(enemy.gameObject);
         }
     }

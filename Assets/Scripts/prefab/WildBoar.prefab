@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 5951095555118892977}
   - component: {fileID: -9079878162329649191}
   - component: {fileID: 8069064260264730660}
-  m_Layer: 0
-  m_Name: ennemy
-  m_TagString: Untagged
+  - component: {fileID: 7254053721243749131}
+  - component: {fileID: 2150716331947390190}
+  m_Layer: 6
+  m_Name: WildBoar
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,3 +164,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7254053721243749131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164849860079742732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99140a7c808dfac428d7c874a1546228, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: ee8702d80f621624a99918e0cdb3e774, type: 2}
+  detectionRadius: 5
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &2150716331947390190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164849860079742732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a965740a96bf2bd428c356c2203e050a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyData: {fileID: 11400000, guid: ee8702d80f621624a99918e0cdb3e774, type: 2}
