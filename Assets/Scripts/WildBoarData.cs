@@ -7,6 +7,7 @@ public class ennemy_data : ScriptableObject
     public int health;
     public int speed;
     public float time;
+    public bool isDangerous;
     public Color color;
     
 }

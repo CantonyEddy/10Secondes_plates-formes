@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8069064260264730660}
   - component: {fileID: 7254053721243749131}
   - component: {fileID: 2150716331947390190}
+  - component: {fileID: 3795241853983640100}
   m_Layer: 6
   m_Name: WildBoar
   m_TagString: Enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3562098795564424677, guid: e790423248b83d94887c587ed7caabba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -181,6 +182,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
+  _animator: {fileID: 3795241853983640100}
 --- !u!114 &2150716331947390190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,3 +196,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: ee8702d80f621624a99918e0cdb3e774, type: 2}
+  _animator: {fileID: 3795241853983640100}
+--- !u!95 &3795241853983640100
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164849860079742732}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2dfb334d7a933046aff09dd39fdd800, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

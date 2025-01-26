@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2137134999336319964}
   - component: {fileID: -5342988421951664812}
   - component: {fileID: 7312145833887848116}
+  - component: {fileID: 3736262307450743239}
   m_Layer: 6
   m_Name: Bee
   m_TagString: Enemy
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 3578035753372260634, guid: bbb3a306ce8e8664690b86cde3c217f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -104,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 56ca0a6cbf4a0094f89d7e4b8d393d74, type: 2}
+  _animator: {fileID: 3736262307450743239}
 --- !u!61 &-2137134999336319964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,6 +173,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   attackCooldown: 2
+  _animator: {fileID: 3736262307450743239}
 --- !u!50 &7312145833887848116
 Rigidbody2D:
   serializedVersion: 5
@@ -198,3 +201,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!95 &3736262307450743239
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065730935288549613}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2900ec2cbb2366643b96b64db66700e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

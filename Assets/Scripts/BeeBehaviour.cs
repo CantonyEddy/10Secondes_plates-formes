@@ -9,6 +9,7 @@ public class BeeBehaviour : MonoBehaviour
     public float detectionRadius = 5f; // Distance à laquelle l'abeille détecte le joueur
     public LayerMask playerLayer; // Layer du joueur
     public float attackCooldown = 2f; // Temps d'attente entre deux attaques
+    public Animator _animator;
 
     private Vector3 centerPosition; // Position centrale pour le mouvement circulaire
     private float angle; // Angle actuel pour calculer la position circulaire
@@ -39,12 +40,16 @@ public class BeeBehaviour : MonoBehaviour
             if (playerCollider != null && attackCooldownTimer <= 0f)
             {
                 // Détecte le joueur et prépare une attaque
+                _animator.SetBool("isAtk", true);
+                // Retourner le sprite de l'abeille en direction du joueur
+                Vector3 direction = playerCollider.transform.position - transform.position;
                 player = playerCollider.transform;
                 isAttacking = true;
             }
             else
             {
                 // Si aucun joueur n'est détecté, voler en cercle
+                _animator.SetBool("isAtk", false);
                 FlyInCircle();
             }
         }
@@ -71,6 +76,16 @@ public class BeeBehaviour : MonoBehaviour
         {
             // Déplacer l'abeille vers la position du joueur
             transform.position = Vector3.MoveTowards(transform.position, player.position, attackSpeed * Time.deltaTime);
+            // Retourner le sprite de l'abeille en direction du joueur
+            Vector3 direction = player.position - transform.position;
+            if (direction.x > 0)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            }
 
             // Si elle atteint le joueur, termine l'attaque
             if (Vector3.Distance(transform.position, player.position) < 0.1f)

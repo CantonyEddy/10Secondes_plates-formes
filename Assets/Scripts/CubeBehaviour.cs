@@ -79,9 +79,11 @@ public class CubeBehaviour : MonoBehaviour
             // Récupère tous les ennemis dans le rayon
             Collider2D enemies = Physics2D.OverlapBox(groundCheck.position, groundCheckSize, 0f, enemyLayer);
             // Détruit ennemi
-            timerScript.AddTime(enemies.gameObject.GetComponent<EnemyData>().enemyData.time);
-            Destroy(enemies.gameObject);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            if (enemies.gameObject.GetComponent<EnemyData>().enemyData.isDangerous){
+                timerScript.AddTime(enemies.gameObject.GetComponent<EnemyData>().enemyData.time);
+                enemies.gameObject.GetComponent<EnemyData>().destroy();
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Return) && !IsGrounded() && Input.GetKey(KeyCode.DownArrow))
@@ -187,20 +189,25 @@ public class CubeBehaviour : MonoBehaviour
         // Vérifie si l'objet avec lequel on entre en collision est un ennemi
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (!isDashing)
+            //Debug.Log(collision.gameObject.GetComponent<EnemyData>().enemyData.isDangerous);
+            if (!isDashing && collision.gameObject.GetComponent<EnemyData>().enemyData.isDangerous)
             {
                 GameOver();
             }
-            else
+            else if (isDashing && collision.gameObject.GetComponent<EnemyData>().enemyData.isDangerous)
             {
                 // Détruit l'ennemi
                 timerScript.AddTime(collision.gameObject.GetComponent<EnemyData>().enemyData.time);
-                Destroy(collision.gameObject);
+                collision.gameObject.GetComponent<EnemyData>().destroy();
             }
         }
         if (collision.gameObject.CompareTag("End"))
         {
             Win();
+        }
+         if (collision.gameObject.CompareTag("DeathZone"))
+        {
+                GameOver(); 
         }
     }
 
@@ -307,8 +314,10 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
-            Destroy(enemy.gameObject);
+            if (enemy.gameObject.GetComponent<EnemyData>().enemyData.isDangerous){
+                timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
+                enemy.gameObject.GetComponent<EnemyData>().destroy();
+            }     
         }
     }
     public void IsAtkRightEnemy()
@@ -320,8 +329,10 @@ public class CubeBehaviour : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             // Détruit chaque ennemi
-            timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
-            Destroy(enemy.gameObject);
+            if (enemy.gameObject.GetComponent<EnemyData>().enemyData.isDangerous){
+                timerScript.AddTime(enemy.gameObject.GetComponent<EnemyData>().enemyData.time);
+                enemy.gameObject.GetComponent<EnemyData>().destroy();
+            }
         }
     }
     private void OnDrawGizmosSelected()

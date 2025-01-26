@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -4208070802501491593}
   - component: {fileID: 4903415731453557443}
   - component: {fileID: 6559532800470149741}
+  - component: {fileID: -8372797450792103712}
   m_Layer: 6
   m_Name: Snail
   m_TagString: Enemy
@@ -179,7 +180,7 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 110b773d6f0272341ba24ff9416c4cad, type: 2}
   speed: 2
   groundCheckDistance: 0.5
-  wallCheckDistance: 0.5
+  wallCheckDistance: 0.61
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -196,3 +197,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 110b773d6f0272341ba24ff9416c4cad, type: 2}
+  _animator: {fileID: -8372797450792103712}
+--- !u!95 &-8372797450792103712
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446405491330842377}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85366633d4b956947b20f847b3291c39, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
